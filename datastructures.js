@@ -245,7 +245,7 @@
 			}
 		},
 		remove : function(value){
-			var current = parent = replace = null, found = false, isRoot = false, numChildren;
+			var current = parent = rparent = replace = null, found = false, isRoot = false, numChildren;
 
 			(f = function(c){
 				if(value < c.value){
@@ -295,11 +295,24 @@
 				}				
 			}else if(numChildren === 2){
 				if(isRoot){
-					replace = this.root.left;
-					if(this.root.left !== null){
-						replace.right  = this.root.right;
-					}
-					this.root = replace;
+	                replacement = this.root.left;
+
+	                while (replacement.right !== null){
+	                    rparent = replacement;
+	                    replacement = replacement.right;
+	                }
+
+	                if (rparent !== null){
+	                    rparent.right = replacement.left;
+
+	                    replacement.right = this.root.right;
+	                    replacement.left = this.root.left;
+	                } else {
+
+	                    replacement.right = this.root.right;
+	                }
+
+	                this.root = replacement;
 				}else{
 					replace = current.left;
 
@@ -363,6 +376,9 @@
 
 			return count;
 		},
+		clear : function(){
+			this.root = null;
+		},		
 		toArray: function(){
 	        var tmpArr = [];
 
@@ -428,6 +444,9 @@
 					process.call(this, this.collection[key]);
 				}
  			}		
+		},
+		clear : function(){
+			this.collection = {};
 		},
 		print : function(){
 			var item;

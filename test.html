@@ -9,8 +9,8 @@
 
 		<section>
 			<article>
-<div id="qunit"></div>
-  <div id="qunit-fixture"></div>
+				<div id="qunit"></div>
+				<div id="qunit-fixture"></div>
 			</article>
 		</section>
 
@@ -19,7 +19,9 @@
 		<script src="datastructures.js"></script>
 		<script>
 
-
+			/*
+				Collection Unit Test
+			*/
 			var list = new struct.collection();
 
 			module("list");
@@ -44,6 +46,14 @@
 				equal(list.count(), 3, 'list->count: passed');
 			}); 	
 
+			test('clear', function() { 			
+				list.clear();
+
+				equal(list.item(0), null, 'list->clear: passed');
+			}); 
+			/*
+				Linked List Unit Test
+			*/
 			var linkedList = new struct.linkedList();
 
 			module("linkedList");
@@ -154,7 +164,87 @@
 
 
 				equal(linkedList.length(), 6, 'linked list->length: passed');
-			}); 									
+			}); 	
+
+			test('clear', function() { 			
+				linkedList.clear();
+
+				equal(linkedList.item(0), null, 'linked list->clear: passed');
+			}); 
+			/*
+				Binary Unit Test
+			*/
+
+			var tree = new struct.binaryTree();
+
+			module("tree");
+			
+			test('add', function() { 
+				tree.clear();
+				tree.add(9);
+				tree.add(4);
+				tree.add(15);
+				tree.add(2);
+				tree.add(6);
+				tree.add(12);
+				tree.add(17);																
+				equal(tree.count(), 7, 'binary tree->add: passed');
+			}); 			
+			test('remove', function() { 
+				tree.clear();
+				tree.add(9);
+				tree.add(4);
+				tree.add(15);
+				tree.add(2);
+				tree.add(6);
+				tree.add(12);
+				tree.add(17);
+
+				tree.remove(9);													
+
+				equal(tree.count(), 6, 'binary tree->remove: passed');
+			}); 
+			test('find', function() { 
+				tree.clear();
+				tree.add(9);
+				tree.add(4);
+				tree.add(15);
+				tree.add(2);
+				tree.add(6);
+				tree.add(12);
+				tree.add(17);
+
+				equal(tree.find(9).value, 9, 'binary tree->find: passed');
+			});			
+			test('minNode', function() { 
+				tree.clear();
+				tree.add(9);
+				tree.add(4);
+				tree.add(15);
+				tree.add(2);
+				tree.add(6);
+				tree.add(12);
+				tree.add(17);
+
+				equal(tree.minNode(), 2, 'binary tree->minNode: passed');
+			}); 
+			test('maxNode', function() { 
+				tree.clear();
+				tree.add(9);
+				tree.add(4);
+				tree.add(15);
+				tree.add(2);
+				tree.add(6);
+				tree.add(12);
+				tree.add(17);
+
+				equal(tree.maxNode(), 17, 'binary tree->minNode: passed');
+			});	
+			test('clear', function() { 
+				tree.clear();
+
+				equal(tree.find(0), null, 'linked list->tree: passed');
+			});									
 		</script>		
 	</body>
 </html>
