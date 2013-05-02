@@ -21,13 +21,13 @@
 				if(index === 0){
 					return current.data;
 				}				
-				while(current.next !== null){					
+				while(current){	
+					
 					if(count === index){
 						return current.data;
 					}
 					
 					current = current.next;
-					
 					count++;
 				}
 			}
@@ -55,14 +55,14 @@
 			}
 
 			if(index >= 0 && index <= length){
-				while(current.next !== null){
-					if(index === 0){
-						node.next = current;
-						this.head = node;
-						
-						return;
-					}
-					else if(count === index - 1){
+				if(index === 0){
+					node.next = current;
+					this.head = node;
+					
+					return;
+				}
+				while(current){
+					if(count === index - 1){
 						node.next = current.next;
 						current.next = node;						
 
@@ -71,18 +71,19 @@
 
 					current = current.next;
      	           	count++;
-	            }	       
+	            }	 	             
 			}
 		},
 		insertAfter : function(index, data){
-			var node = { data : data, next : null}, current = this.head, length = this.length(), count = 0;;
+			var node = { data : data, next : null}, current = this.head, length = this.length(), count = 0;
 
 			if(this.isEmpty()){
 				return;
 			}
 
 			if(index >= 0 && index <= length){
-				while(current.next !== null){			
+				while(current){			
+				
 					if(count === index){
 						node.next = current.next;
 						current.next = node;						
@@ -161,8 +162,9 @@
 			if(this.isEmpty()){
 				return;
 			}else{
-				while(current !== null){
-					if(count === length){
+				while(current){
+
+					if(count === length - 1){
 						previous.next = current.next;
 						delete current;
 
@@ -180,7 +182,7 @@
 
 			if(current === null) return 0;
 			
-			while(current.next !== null){
+			while(current){
 				current = current.next;
 				count++;
 			}
@@ -196,7 +198,7 @@
 		toArray : function(){
 			var current = this.head, tmpArr = [];
 
-			while(current.next !== null){
+			while(current){
 				tmpArr.push(current.data);
 				current = current.next;
 			}
