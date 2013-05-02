@@ -1,0 +1,160 @@
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="http://code.jquery.com/qunit/qunit-1.11.0.css"></link>
+	</head>
+
+	<body>
+		<header></header>
+
+		<section>
+			<article>
+<div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+			</article>
+		</section>
+
+		<footer></footer>
+		<script src="http://code.jquery.com/qunit/qunit-git.js"></script>
+		<script src="datastructures.js"></script>
+		<script>
+
+
+			var list = new struct.collection();
+
+			module("list");
+			
+			test('add', function() { 
+				list.add(1, 'dan');
+
+				equal(list.item(1), 'dan', 'ist->add: passed');
+			}); 
+
+			test('remove', function() { 			
+				list.remove(1);
+
+				equal(list.count(), 0, 'list->remove: passed');
+			}); 
+
+			test('length', function() { 			
+				list.add(1, 'dan');
+				list.add(2, 'chris');
+				list.add(3, 'leah');				
+
+				equal(list.count(), 3, 'list->count: passed');
+			}); 	
+
+			var linkedList = new struct.linkedList();
+
+			module("linkedList");
+			
+			test('insert', function() { 
+				linkedList.clear();
+				linkedList.insert('dan');
+
+				equal(linkedList.item(0), 'dan', 'linked list->insert: passed');
+			}); 
+			test('insertBefore', function() { 
+				linkedList.clear();				
+				linkedList.insert('dan');
+				linkedList.insertBefore(0, 'stanhope');
+				linkedList.insertBefore(1, 'michael');
+
+				equal(linkedList.item(0), 'stanhope', 'linked list->insertBefore: passed');
+				equal(linkedList.item(1), 'michael', 'linked list->insertBefore: passed');		
+				equal(linkedList.length(), 3, 'linked list length okay');			
+			});
+			test('insertAfter', function() { 
+				linkedList.clear();				
+				linkedList.insert('dan');
+				linkedList.insertAfter(0, 'stanhope');
+				linkedList.insertAfter(1, 'BSc');
+
+				equal(linkedList.item(0), 'dan', 'linked list->insertAfter: passed');
+				equal(linkedList.item(2), 'BSc', 'linked list->insertAfter: passed');
+				equal(linkedList.length(), 3, 'linked list length okay');	
+			});		
+			test('insertFirst', function() { 
+				linkedList.clear();				
+				linkedList.insertFirst('dan');
+				linkedList.insertFirst('stanhope');
+
+
+				equal(linkedList.item(0), 'stanhope', 'linked list->insertFirst: passed');
+				equal(linkedList.item(1), 'dan', 'linked list->insertFirst: passed');		
+				equal(linkedList.length(), 2, 'linked list length okay');			
+			});
+			test('insertLast', function() { 
+				linkedList.clear();				
+				linkedList.insertLast('dan');
+				linkedList.insertLast('stanhope');
+
+				equal(linkedList.item(0), 'dan', 'linked list->insertLast: passed');
+				equal(linkedList.item(1), 'stanhope', 'linked list->insertLast: passed');
+				equal(linkedList.length(), 2, 'linked list length okay');	
+			});					
+			test('remove', function() { 			
+				linkedList.clear();				
+				linkedList.remove(0);
+
+				equal(linkedList.length(), 0, 'linked list->remove: passed');
+			}); 
+			test('removeBefore', function() { 
+				linkedList.clear();				
+				linkedList.insert('dan');
+				linkedList.insertBefore(0, 'stanhope');
+				linkedList.insertBefore(1, 'michael');
+
+				equal(linkedList.item(0), 'stanhope', 'linked list->insertBefore: passed');
+				equal(linkedList.item(1), 'michael', 'linked list->insertBefore: passed');		
+				equal(linkedList.length(), 3, 'linked list length okay');			
+			});
+			test('removeAfter', function() { 
+				linkedList.clear();				
+				linkedList.insert('dan');
+				linkedList.insertAfter(0, 'stanhope');
+				linkedList.insertAfter(1, 'BSc');
+
+				equal(linkedList.item(0), 'dan', 'linked list->insertAfter: passed');
+				equal(linkedList.item(2), 'BSc', 'linked list->insertAfter: passed');
+				equal(linkedList.length(), 3, 'linked list length okay');	
+			});	
+			test('removeFirst', function() { 
+				linkedList.clear();				
+				linkedList.insertFirst('dan');
+				linkedList.insertFirst('stanhope');
+
+
+				equal(linkedList.item(0), 'stanhope', 'linked list->insertFirst: passed');
+				equal(linkedList.item(1), 'dan', 'linked list->insertFirst: passed');		
+				equal(linkedList.length(), 2, 'linked list length okay');			
+			});
+			test('removeLast', function() { 
+				linkedList.clear();			 			
+				linkedList.insert('dan');
+				linkedList.insert('chris');
+				linkedList.insert('leah');	
+				linkedList.insert('mike');				
+				linkedList.insert('shelly');								
+				linkedList.insert('jennie');
+
+				linkedList.removeLast();
+
+				equal(linkedList.item(linkedList.length() - 1), 'shelly', 'linked list->insertLast: passed');
+				equal(linkedList.length(), 5, 'linked list length okay');	
+			});				
+			test('length', function() {
+				linkedList.clear();			 			
+				linkedList.insert('dan');
+				linkedList.insert('chris');
+				linkedList.insert('leah');	
+				linkedList.insert('mike');				
+				linkedList.insert('shelly');								
+				linkedList.insert('jennie');				
+
+
+				equal(linkedList.length(), 6, 'linked list->length: passed');
+			}); 									
+		</script>		
+	</body>
+</html>
