@@ -1,10 +1,9 @@
 <html>
 
 	<head>
-		<script src="underscore-min.js"></script>
-		<script src="underscore.dstruct.js"></script>
+		<script src="datastructure.js"></script>
 		<script>
-			var list = new dstruct.linkedList();
+			var list = new struct.linkedList();
 
 			list.insert('1');
 			list.insert('2');
@@ -16,7 +15,7 @@
 
 			console.log(list.toArray());
 
-			var list2 = new dstruct.linkedList();
+			var list2 = new struct.linkedList();
 
 			list2.insert('a');
 			list2.insert('b');
@@ -28,7 +27,7 @@
 
 			console.log(list2.toArray());
 
-			var tree = new dstruct.binaryTree();
+			var tree = new struct.binaryTree();
 
 			tree.add(28);
 			tree.add(14);
@@ -43,7 +42,7 @@
 
 			console.log(tree.toArray());
 
-			var list = new dstruct.collection();
+			var list = new struct.collection();
 
 			list.add(1, 'dan');
 			list.add(2, 'Chris');

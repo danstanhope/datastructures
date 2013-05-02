@@ -1,15 +1,15 @@
 (function(root){
 
-	root['dstruct'] = root['dstruct'] || {};
+	root['struct'] = root['struct'] || {};
 
 	/* 
 		Linked List Implementation
 	*/
-	dstruct.linkedList = function(){
+	struct.linkedList = function(){
 		this.head = null;
 	}
 
-	dstruct.linkedList.prototype = {  
+	struct.linkedList.prototype = {  
 		item : function(index){
 			var length = this.length(), count = 0, current = this.head;
 
@@ -35,7 +35,7 @@
 		insert : function(data){
 			var node = { data : data, next : null}, current = {};
 
-			if(_.isNull(this.head)){
+			if(this.head === null){
 				this.head = node;
 			}else{
 				current = this.head;
@@ -211,11 +211,11 @@
 	/* 
 		Binary Tree Implementation
 	*/
-	dstruct.binaryTree = function(){
+	struct.binaryTree = function(){
 		this.root = null;
 	};
 
-	dstruct.binaryTree.prototype = {
+	struct.binaryTree.prototype = {
 		add :function(value){
 			var node = {value : value, left: null, right: null};
 
@@ -394,12 +394,12 @@
 	/*
 		Collection Implementation
 	*/
-	dstruct.collection = function(){
+	struct.collection = function(){
 		this.length = 0;
 		this.collection = {};
 	};
 
-	dstruct.collection.prototype = {
+	struct.collection.prototype = {
 		add : function(key, item){
 			if(this.collection.hasOwnProperty(key)) return;
 
