@@ -9,7 +9,7 @@
 		this.head = null;
 	}
 
-	dstruct.linkedList.prototype = {
+	dstruct.linkedList.prototype = { 
 		item : function(index){
 			var length = this.length(), count = 0, current = this.head;
 
